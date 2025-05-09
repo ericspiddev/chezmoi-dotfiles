@@ -4,4 +4,10 @@
 [core]
 	editor = nvim
 	page = delta
-	pager = delta --dark --line-numbers
+    pager = delta --dark --line-numbers
+
+[diff]
+    algorithim = historgram
+
+[merge]
+	conflictStyle = zdiff3
