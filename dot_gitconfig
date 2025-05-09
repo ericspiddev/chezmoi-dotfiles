@@ -1,0 +1,7 @@
+[user]
+	name = Eric Spidle
+	email = ericspidledev@gmail.com
+[core]
+	editor = nvim
+	page = delta
+	pager = delta --dark --line-numbers
