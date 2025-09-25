@@ -1,4 +1,4 @@
-ONEDARK_THEME='deep'
+ONEDARK_THEME='warmer'
 
 return {
     "navarasu/onedark.nvim",
