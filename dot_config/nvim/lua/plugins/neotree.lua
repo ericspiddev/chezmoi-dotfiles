@@ -8,5 +8,6 @@ return {
     },
     config = function()
         vim.keymap.set('n', '<C-s>', ':Neotree reveal right toggle <CR>', {})
+        vim.keymap.set('n', '<leader>s', ':Neotree float git_status toggle <CR>', {})
     end
 }
