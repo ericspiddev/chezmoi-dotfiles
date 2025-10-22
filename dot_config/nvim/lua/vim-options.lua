@@ -7,6 +7,8 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.keymap.set('n', '<C-n>', ':tabnew <CR>', {})
 vim.keymap.set('n', 'nh', ':noh <CR>', {})
+vim.keymap.set('n', 'sq', ':wq <CR>', {})
+vim.keymap.set('n', 'sqa', ':wqa <CR>', {})
 
 -- Set SIGN symbols for all message types
 vim.diagnostic.config({
