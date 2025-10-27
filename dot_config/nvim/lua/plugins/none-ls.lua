@@ -18,7 +18,6 @@ return {
                     null_lsp.builtins.formatting.rubocop,
                     null_lsp.builtins.diagnostics.rubocop,
                     require('none-ls.diagnostics.eslint_d'),
-                    require('none-ls.cpplint'),
                 },
             })
             vim.keymap.set('n', '<leader>gf', vim.lsp.buf.format, {})
