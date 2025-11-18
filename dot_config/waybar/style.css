@@ -1,99 +1,73 @@
-* {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: monospace, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 15px;
-}
+/**** Color Variables ****/
 
 @define-color primary #ff6500;
 @define-color secondary #111111;
 @define-color dark #030712;
 
-window#waybar {
-    background-color: @secondary;
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+/**************************************/
+
+/**** Global Waybar ****/
+
+*
+{
+    font-family: monospace, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
-}
+/**************************************/
 
-/* button { */
-/**/
-/*     box-shadow: inset 0 -3px transparent; */
-/**/
-/*     border: none; */
-/*     border-radius: 0; */
-/* } */
-
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
-}
+/**** Common styles across modules ****/
 
 #clock,
-#battery,
 #memory,
 #disk,
-#temperature,
+#cpu,
 #backlight,
 #network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
-}
-
-#cpu {
+#pulseaudio-slider,
+#custom-reboot,
+#custom-logout,
+#custom-lock,
+#custom-shutdown
+{
+    font-size: 15px;
     padding: 0 10px;
     color: #ffffff;
     background-color: @secondary;
+}
+
+#custom-reboot,
+#custom-logout,
+#custom-lock,
+#custom-shutdown
+{
+    min-height: 0.5em;
+    font-size: 1.2rem;
+}
+
+#custom-reboot:hover,
+#custom-logout:hover,
+#custom-lock:hover,
+#custom-shutdown:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#network:hover
+{
+    background-color: @primary;
+    transition-property: background-color;
+    transition-duration: 1s;
 }
 
 #window,
-#workspaces {
-    margin: 0 4px;
+#workspaces
+{
+    margin: 0 2px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
+/**************************************/
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    background-color: @secondary;
-    /*@primary
-    * @secondary*/
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-#window {
-    border: 0.15em #343434 solid;
-    background-color: #111111;
-    padding: 0.5em;
-    min-width: 325px;
-    border-radius: 0.5em;
-}
+/**** hyprland Workspace Styles/Animations ****/
 
 #workspaces {
     border: 0.15em #343434 solid;
@@ -101,7 +75,8 @@ button:hover {
     border-radius: 0.5em;
 }
 
-#workspaces button {
+#workspaces button
+{
     background-color: @secondary;
     padding: 0.75em;
     margin-right: 0.5em;
@@ -110,18 +85,8 @@ button:hover {
     border-radius: 0.50em;
 }
 
-@keyframes wsActiveAnimation {
-    from {
-        background-color: @primary;
-        border-color: white;
-    }
-    to {
-        background-color: @secondary;
-        border-color: @primary;
-    }
-}
-
-#workspaces button.active {
+#workspaces button.active
+{
     background-color: @primary;
     color: #ffffff;
     transition-property: background-color;
@@ -135,176 +100,101 @@ button:hover {
     border-style: solid;
 }
 
-label:focus {
-    background-color: #000000;
+@keyframes wsActiveAnimation
+{
+    from {
+        background-color: @primary;
+        border-color: white;
+    }
+    to {
+        background-color: @secondary;
+        border-color: @primary;
+    }
 }
 
-#memory {
+/**************************************/
+
+/**** hyprland Window Styles ****/
+
+#window
+{
+    border: 0.15em #343434 solid;
+    background-color: #111111;
+    padding: 0.5em;
+    min-width: 325px;
+    border-radius: 0.5em;
+}
+
+window#waybar
+{
     background-color: @secondary;
-}
-
-#disk {
-    background-color: @secondary;
-}
-
-#backlight {
-    background-color: #90b1b1;
-}
-
-#network {
-    background-color: @secondary;
-}
-
-#network.disconnected {
-    background-color: #f53c3c;
-}
-
-#pulseaudio {
-    background-color: @secondary;
-    color: #FFFFFF;
-}
-
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
-}
-
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
-}
-
-#wireplumber.muted {
-    background-color: #f53c3c;
-}
-
-#custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-    background-color: #ffa000;
-}
-
-#temperature {
-    background-color: #f0932b;
-}
-
-#temperature.critical {
-    background-color: #eb4d4b;
-}
-
-#tray {
-    background-color: @primary;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: #2d3436;
-}
-
-#idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
-}
-
-#mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
-}
-
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
-}
-
-#mpd.paused {
-    background-color: #51a37a;
-}
-
-#language {
-    background: #00b093;
-    color: #740864;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
-}
-
-#keyboard-state {
-    background: @primary;
     color: #ffffff;
-    padding: 0.25em;
-    margin: 0 5px;
-    min-width: 16px;
+    transition-property: background-color;
+    transition-duration: .5s;
 }
 
-#keyboard-state > label {
-    padding: 0 5px;
+window#waybar.hidden
+{
+    opacity: 0.2;
 }
 
-#keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+/**************************************/
+
+/**** Pulseuadio Slider Styles ****/
+
+#pulseaudio-slider trough
+{
+    min-width: 100px;
+    border-radius: 5px;
+    background: white;
+    border-color: white;
 }
 
-#scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+#pulseaudio-slider highlight
+{
+    min-width: 10px;
+    border-radius: 5px;
+    background: @primary;
+    border-color: @primary;
 }
 
-#scratchpad.empty {
-	background-color: transparent;
-}
+/**************************************/
 
-#privacy-item.screenshare {
-    background-color: #cf5700;
-}
-
-#privacy-item.audio-in {
-    background-color: #1ca000;
-}
-
-#privacy-item.audio-out {
-    background-color: #0069d4;
-}
-
-#group-metrics, #group-tools, #group-power {
+/**** Groups Styles ****/
+#group-metrics,
+#group-tools,
+#group-power
+{
     border: 0.15em #343434 solid;
     background-color: @secondary;
     border-radius: 0.50em;
     padding: 0 10px;
+    margin-right: 5px;
 }
 
-#group-power {
-    padding: 0 10px;
-}
-
-#group-metrics:hover, #group-tools:hover, #group-power:hover {
+#group-metrics:hover,
+#group-tools:hover,
+#group-power:hover
+{
     background-color: @primary;
     transition-property: background-color;
-    transition-duration: .5s;
-    padding: 0 10px;
+    transition-duration: 0.75s;
     padding-right: 0px;
-    margin-right: 10px;
 }
 
-#custom-reboot, #custom-logout, #custom-lock, #custom-shutdown{
-    background-color: @secondary;
-    padding: 0 10px;
-    min-width: 1em;
+/**************************************/
+
+/**** Misc Styles ****/
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
 }
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+/**************************************/
