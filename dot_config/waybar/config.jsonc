@@ -199,8 +199,17 @@
         ]
     },
 
+    "pulseaudio/slider" : {
+        "orientation": "horiztonal",
+    },
+
     "custom/tools-icon": {
         "format": "Tools:  ",
+        "tooltip": false,
+    },
+
+    "custom/audio-icon": {
+        "format": " ",
         "tooltip": false,
     },
 
@@ -211,7 +220,8 @@
         },
         "modules": [
             "custom/tools-icon",
-            "pulseaudio",
+            "custom/audio-icon",
+            "pulseaudio/slider",
             "network",
         ]
     },
@@ -222,25 +232,25 @@
     },
 
     "custom/shutdown" : {
-        "format" : "󰐥 ",
+        "format" : " 󰐥 ",
         "tooltip-format" : "Shutdown",
         "on-click" : "shutdown now"
     },
 
     "custom/reboot":{
-        "format" : " ",
+        "format" : "  ",
         "on-click" : "reboot",
         "tooltip-format" : "Reboot"
     },
 
     "custom/lock":{
-        "format" : " ",
+        "format" : "  ",
         "on-click" : "hyprlock",
         "tooltip-format" : "Lock",
     },
 
     "custom/logout":{
-        "format" : "󰈆 ",
+        "format" : " 󰈆 ",
         "on-click" : "hyprctl dispatch exit 1",
         "tooltip-format" : "Log Out",
     },
