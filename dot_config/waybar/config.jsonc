@@ -24,7 +24,7 @@
         "on-click" : "activate",
         "active-only" : "false",
         "all-outputs" : "true",
-        "format": "WS-{id} ",
+        "format": "{windows} WS-{id}  ",
         "format-window-separator":"|",
         "persistent-workspaces" : {
             "HDMI-A-1" : [ 2, 4, 6, 8, 10],
@@ -32,19 +32,17 @@
         },
         "show-special": true,
         "special-visible-only": true,
-        "sort-by-number" : true
-    },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
+        "sort-by-number" : true,
+        "window-rewrite" : {
+            "class<.*ghostty.*>" : " ",
+            "class<.*firefox.*>" : "󰈹 ",
+            "class<Spotify>" : " ",
+            "title<.*nvim.*>" : " ",
         }
     },
 
     "hyprland/window": {
+        "format": " 󰣇 {}",
         "max-length" : 35,
         "separate-outputs": true,
     },
@@ -53,93 +51,21 @@
         "format" : "{percentage_used}%  ",
     },
 
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
-    },
     "clock": {
         "timezone": "America/New_York",
-        "format" : "{:%a %b-%d-%Y %I:%M %p}",
+        "format" : "{:%a %b-%d-%Y %I:%M %p}  ",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%I:%M %p}"
+        "format-alt": "{:%I:%M %p} 󰥔 "
     },
+
     "cpu": {
         "format": "{usage}%  ",
     },
+
     "memory": {
         "format": "{}%  "
     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
-    },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi":"{signalStrength}%  ",
@@ -148,36 +74,6 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": " {bandwidthUpBytes} |  {bandwidthDownBits} | 󰤨 {signalStrength}"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
 
     "custom/metric-icon": {
@@ -199,6 +95,17 @@
         ]
     },
 
+    "group/group-audio" : {
+        "orientation" : "horizontal",
+        "drawer": {
+            "children-class": "display-audio"
+        },
+        "modules": [
+            "custom/audio-icon",
+            "pulseaudio/slider"
+        ]
+    },
+
     "pulseaudio/slider" : {
         "orientation": "horiztonal",
     },
@@ -213,6 +120,17 @@
         "tooltip": false,
     },
 
+    "bluetooth" : {
+        "format" : " {status}",
+        "tooltip-format" : "{device_enumerate}",
+        "format-no-controller" : "󰂲 N/A",
+        "format-disconnected" : "N/A 󰂲 ",
+        "format-off" : "N/A 󰂲 ",
+        "on-click" : "systemctl start bluetooth",
+        "on-click-right" : "systemctl stop bluetooth",
+        "tooltip" : true,
+    },
+
     "group/group-tools": {
         "orientation" : "horizontal",
         "drawer": {
@@ -220,9 +138,9 @@
         },
         "modules": [
             "custom/tools-icon",
-            "custom/audio-icon",
-            "pulseaudio/slider",
+            "bluetooth",
             "network",
+            "group/group-audio",
         ]
     },
 

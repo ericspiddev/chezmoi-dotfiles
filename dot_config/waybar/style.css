@@ -10,7 +10,7 @@
 
 *
 {
-    font-family: monospace, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 15px;
 }
 
@@ -28,7 +28,9 @@
 #custom-reboot,
 #custom-logout,
 #custom-lock,
-#custom-shutdown
+#custom-shutdown,
+#custom-audio-icon,
+#bluetooth
 {
     font-size: 15px;
     padding: 0 10px;
@@ -52,7 +54,8 @@
 #cpu:hover,
 #memory:hover,
 #disk:hover,
-#network:hover
+#network:hover,
+#bluetooth:hover
 {
     background-color: @primary;
     transition-property: background-color;
@@ -169,7 +172,7 @@ window#waybar.hidden
     background-color: @secondary;
     border-radius: 0.50em;
     padding: 0 10px;
-    margin-right: 5px;
+    margin: 0 5px;
 }
 
 #group-metrics:hover,
@@ -180,6 +183,22 @@ window#waybar.hidden
     transition-property: background-color;
     transition-duration: 0.75s;
     padding-right: 0px;
+}
+
+/**************************************/
+
+/**** Clock Styles ****/
+
+#clock {
+    padding: 0 20px;
+}
+
+#window:hover,
+#clock:hover {
+    font-weight: 800;
+    color: @primary;
+    transition-property: color;
+    transition-duration: 0.5s;
 }
 
 /**************************************/
