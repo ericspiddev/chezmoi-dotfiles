@@ -1,25 +1,25 @@
 return {
     {
-        "williamboman/mason.nvim",
-        config = function()
-        require("mason").setup()
-        end
+        "mason-org/mason.nvim",
+        opts = {}
     },
     {
         "williamboman/mason-lspconfig.nvim",
-        config = function()
-            require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "clangd"}
-            })
-        end
-
+        opts ={},
+        dependencies = {
+            { "maon-org/mason.nvim", opts = {}},
+            "neovim/nvim-lspconfig"
+        }
     },
     {
         "neovim/nvim-lspconfig",
         config = function()
             vim.lsp.config['luals'] = {}
-            vim.lsp.config['clangd'] = {}
             vim.lsp.enable('luals')
+
+            vim.lsp.config['clangd'] = {
+                filetypes = {'c', 'cpp'}
+            }
             vim.lsp.enable('clangd')
 
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
