@@ -2,3 +2,12 @@ Host magicmirror
     HostName 192.168.1.79
     User pi
     StrictHostKeyChecking no
+
+Host portfolio
+    HostName 18.233.224.83
+    User ubuntu
+
+Host devbuilder
+    HostName 192.168.1.200
+    User devbuild
+
