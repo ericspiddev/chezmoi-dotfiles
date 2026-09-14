@@ -22,6 +22,7 @@ function lsp_register_keymaps()
     vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, {})
     vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {})
     vim.keymap.set('n', '<leader>h', vim.lsp.buf.signature_help, {})
+    vim.keymap.set('n', '<leader>w', vim.diagnostic.open_float, {})
 end
 
 return {
