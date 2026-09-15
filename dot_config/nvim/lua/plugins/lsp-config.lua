@@ -3,6 +3,8 @@ lsps = {
     { name = "clangd",      config = {} },
     { name = "pylsp",        config = {}},
     { name = "dockerls",        config = {}},
+    { name = "bashls",        config = {}},
+    { name = "ts_ls",        config = {}},
 }
 
 function lsp_register_all()
