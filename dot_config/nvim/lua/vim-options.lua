@@ -5,6 +5,7 @@ vim.cmd("set shiftwidth=4")
 vim.g.mapleader = " "
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.opt.timeoutlen = 400
 vim.keymap.set('n', '<C-n>', ':tabnew <CR>', {})
 vim.keymap.set('n', '<leader>nh', ':noh <CR>', {})
 vim.keymap.set('n', 'sq', ':wq <CR>', {})
@@ -14,7 +15,7 @@ vim.keymap.set('ca', 'W', 'w', {})
 vim.keymap.set('ca', 'Wq', 'wq', {})
 vim.keymap.set('ca', 'Qa', 'qa', {})
 vim.keymap.set('ca', 'Qa!', 'qa!', {})
-vim.keymap.set('x', '<leader>p', 'P', {desc = 'Paste without yanking selection into clipboard' })
+vim.keymap.set('x', '<leader>p', 'P', { desc = 'Paste without yanking selection into clipboard' })
 
 vim.opt.colorcolumn = "100"
 
