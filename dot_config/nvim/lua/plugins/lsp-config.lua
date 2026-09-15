@@ -1,5 +1,5 @@
 lsps = {
-    { name = "luals",       config = {} },
+    { name = "lua_ls",       config = {} },
     { name = "clangd",      config = {} },
     { name = "pylsp",        config = {}},
     { name = "dockerls",        config = {}},
